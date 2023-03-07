@@ -1,6 +1,7 @@
 import React from "react";
 import { styled, createTheme, ThemeProvider } from "@mui/system";
 import { Typography, AppBar } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const customTheme = createTheme({
   palette: {
@@ -29,6 +30,7 @@ const MyHeader = styled("header")(({ theme }) => ({
 }));
 
 export default function Header() {
+  const navigate = useNavigate();
   return (
     <AppBar
       position="fixed"
@@ -39,7 +41,10 @@ export default function Header() {
     >
       <ThemeProvider theme={customTheme}>
         <MyHeader>
-          <Typography variant="h6" onClick={()=>window.scroll(0,0)}>🎬 Entertainment Hub 🎥</Typography>
+          <Typography variant="h6" onClick={() => {
+            navigate('/');
+            window.scroll(0, 0);
+          }}>🎬 Entertainment Hub 🎥</Typography>
         </MyHeader>
       </ThemeProvider>
     </AppBar>

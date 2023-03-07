@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header';
 import SimpleBottomNavigation from './components/MainNav';
 import MovieData from './components/MovieData';
+import TrendingData from './components/TrendingData';
 import SeriesData from './components/SeriesData';
 import Movies from './Pages/Movies/Movies';
 import Search from './Pages/Search/Search';
@@ -18,7 +19,7 @@ function App() {
 				<Container>
 					<Routes>
 						<Route path='/' element={<Trending />} />
-						<Route path='/:link' element={<MovieData />} />
+						<Route path='/:link' element={<TrendingData />} />
 						<Route path='/movies' element={<Movies />} />
 						<Route path='/movies/:link' element={<MovieData />} />
 						<Route path='/series' element={<Series />} />
