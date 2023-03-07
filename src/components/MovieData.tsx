@@ -4,6 +4,7 @@ import {
   CardActionArea,
   CardContent,
   CardMedia,
+  Container,
   Grid,
   Paper,
   styled,
@@ -38,43 +39,44 @@ const MovieData = () => {
 
   console.log(MovieData);
   return (
-    <Box
-      height={"calc(100vh - 70px)"}
-      display={"flex"}
-      justifyContent={"space-between"}
-      flexDirection={"row"}
-      alignItems={"center"}
-    >
-      <Card sx={{ maxWidth: "1080px" ,margin:"20px" }}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            height="100%"
-            image={
-              MovieData.poster_path
-                ? `${img_400}${MovieData.poster_path}`
-                : unavailable
-            }
-            alt={MovieData.title?.toString()}
-          ></CardMedia>
-        </CardActionArea>
-      </Card>
-      <Grid>
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{
-            display: "-webkit-box",
-            marginTop: "0px",
-          }}
-        >
+    <Box display={"flex"} justifyContent={"space-around"} flexDirection={"row"}>
+      <Box
+        height={"calc(100vh - 70px)"}
+        display={"flex"}
+        justifyContent={"space-between"}
+        flexDirection={"row"}
+        alignItems={"center"}
+      >
+        <Card sx={{ maxWidth: "1080px", margin: "10px" }}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="100%"
+              image={
+                MovieData.poster_path
+                  ? `${img_400}${MovieData.poster_path}`
+                  : unavailable
+              }
+              alt={MovieData.title?.toString()}
+            ></CardMedia>
+          </CardActionArea>
+        </Card>
+      </Box>
+      <Grid
+        display={"flex"}
+        flexDirection={"column"}
+        alignItems={"left"}
+        justifyContent={"center"}
+      >
+        <Typography variant="h5" gutterBottom>
           {MovieData.title}
         </Typography>
-        <Grid display="flex" flexDirection="column">
-          <Typography variant="subtitle1">MOVIE</Typography>
-          <Typography variant="subtitle1">{MovieData.release_date}</Typography>
-        </Grid>
-        <Grid>{MovieData.overview}</Grid>{" "}
+        <Typography variant="subtitle1" gutterBottom>
+          {MovieData.release_date}
+        </Typography>
+        <Typography variant="body1" gutterBottom>
+          {MovieData.overview}
+        </Typography>
       </Grid>
     </Box>
   );
