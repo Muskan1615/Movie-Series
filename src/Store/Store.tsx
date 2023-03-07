@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import movieSlice, { movieDataSlice } from './Slices/Movieslice';
-import trendingSlice from './Slices/Trendingslice';
+import trendingSlice, { trendingDataSlice } from './Slices/Trendingslice';
 import seriesSlice, { seriesDataSlice } from './Slices/Seriesslice';
 import searchmovieSlice, { searchseriesSlice } from './Slices/MovieSearchslice';
 // import searchseriesSlice from "./Slices/SeriesSearchslice";
@@ -8,6 +8,7 @@ import searchmovieSlice, { searchseriesSlice } from './Slices/MovieSearchslice';
 export const store = configureStore({
 	reducer: {
 		trending: trendingSlice,
+		trendingData: trendingDataSlice.reducer,
 		movies: movieSlice,
 		movieData: movieDataSlice.reducer,
 		series: seriesSlice,
