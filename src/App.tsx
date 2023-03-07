@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header';
 import SimpleBottomNavigation from './components/MainNav';
 import MovieData from './components/MovieData';
+import SeriesData from './components/SeriesData';
 import Movies from './Pages/Movies/Movies';
 import Search from './Pages/Search/Search';
 import Series from './Pages/Series/Series';
@@ -21,7 +22,7 @@ function App() {
 						<Route path='/movies' element={<Movies />} />
 						<Route path='/movies/:link' element={<MovieData />} />
 						<Route path='/series' element={<Series />} />
-						<Route path='/series/:link' element={<MovieData />} />
+						<Route path='/series/:link' element={<SeriesData />} />
 						<Route path='/search' element={<Search />} />
 					</Routes>
 				</Container>
