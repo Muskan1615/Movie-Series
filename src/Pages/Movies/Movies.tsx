@@ -51,9 +51,7 @@ const Movies = () => {
     <>
       <span className="pageTitle">Movies</span>
       <Container>
-        <ButtonGroup
-          sx={{ flexWrap: "wrap", marginBottom: "20px", spacing: "5" }}
-        >
+        <ButtonGroup sx={{ flexWrap: "wrap", marginBottom: "20px", justifyContent:"center"}}>
           {genres.map((item: any) => (
             <Button
               color="inherit"
@@ -62,7 +60,8 @@ const Movies = () => {
               sx={{
                 margin: "5px 10px 5px 0px",
                 width: "15%",
-                whitespace: "nowrap",
+                whiteSpace: "nowrap",
+                textAlign: "center",
               }}
             >
               {item.name}
