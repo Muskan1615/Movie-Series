@@ -1,14 +1,14 @@
-import { img_400, unavailable } from "../../Config/Config";
+import { CardActionArea, Grid } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
+import { img_400, unavailable } from "../../Config/Config";
 
 function MoviesSingleContent(props: any) {
   console.log(props)
-  const link = props.title.split(" ").join("");
+  const link = props.id;
   return (
     <Link to={`/movies/${link}`} style={{ textDecoration: "none" }}>
       <Card sx={{ maxWidth: 250 }}>

@@ -11,6 +11,12 @@ export const fetchMovies = createAsyncThunk(
       return response.data.results;
   }
 );
+
+export const fetchMovieData = createAsyncThunk('movies/fetchMovieData', async (link:number) => {
+	const response = await axios.get(`https://api.themoviedb.org/3/movie/${link}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`);
+	console.log(response.data);
+	return response.data;
+});
 interface fetchMoviesState {
 	movie: any;
 	loading: boolean;
@@ -44,6 +50,27 @@ const movieSlice = createSlice({
   },
 });
 
+export const movieDataSlice = createSlice({
+	name: 'movieData',
+	initialState,
+	reducers: {},
+	extraReducers: (builder) => {
+		builder
+			.addCase(fetchMovieData.pending, (state) => {
+				state.loading = true;
+				state.error = null;
+			})
+			.addCase(fetchMovieData.fulfilled, (state, action) => {
+				state.loading = false;
+        state.movie = action.payload;
+        console.log(state.movie)
+			})
+			.addCase(fetchMovieData.rejected, (state, action) => {
+				state.loading = false;
+				state.error = action.error.message ?? 'An error occurred';
+			});
+	},
+});
 
 
 export default movieSlice.reducer;
