@@ -96,6 +96,7 @@ export default Movies;
 //   total_pages: number;
 //   total_results: number;
 // }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 type ResultsEntity = {
 	adult: boolean;
 	backdrop_path: string;
