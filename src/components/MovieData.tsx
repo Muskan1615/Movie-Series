@@ -9,9 +9,10 @@ import {
   Paper,
   styled,
   Typography,
+  Rating,
 } from "@mui/material";
 import { margin } from "@mui/system";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { img_400, unavailable } from "../Config/Config";
@@ -29,6 +30,7 @@ const MovieData = () => {
   const { link } = useParams();
   const dispatch: any = useDispatch();
   const MovieData = useSelector((state: RootState) => state.movieData.movie);
+  const [value, setValue] = useState<number | null>(2);
 
   useEffect(() => {
     // setLoading(false);
@@ -41,14 +43,14 @@ const MovieData = () => {
   return (
     <Box display={"flex"} justifyContent={"space-around"} flexDirection={"row"}>
       <Box
-        height={"calc(100vh - 70px)"}
+        // height={"calc(100vh - 70px)"}
         display={"flex"}
         justifyContent={"space-between"}
         flexDirection={"row"}
         alignItems={"center"}
       >
-        <Card sx={{ maxWidth: "1080px", margin: "10px" }}>
-          <CardActionArea>
+        <Card sx={{ width: "100%", margin: "10px" }}>
+          <>
             <CardMedia
               component="img"
               height="100%"
@@ -59,7 +61,7 @@ const MovieData = () => {
               }
               alt={MovieData.title?.toString()}
             ></CardMedia>
-          </CardActionArea>
+          </>
         </Card>
       </Box>
       <Grid
@@ -67,6 +69,7 @@ const MovieData = () => {
         flexDirection={"column"}
         alignItems={"left"}
         justifyContent={"center"}
+		width={"50%"}
       >
         <Typography variant="h5" gutterBottom>
           {MovieData.title}
@@ -77,6 +80,13 @@ const MovieData = () => {
         <Typography variant="body1" gutterBottom>
           {MovieData.overview}
         </Typography>
+		<Rating
+        name="read-only"
+        value={MovieData.vote_average/2}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }} readOnly
+      />
       </Grid>
     </Box>
   );

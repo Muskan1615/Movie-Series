@@ -7,7 +7,7 @@ import { CardActionArea, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 
 function TrendingSingleContent(props: Props) {
-  const link = props.title.split(" ").join("");
+  const link = props.id;
   return (
     <>
       <Link to={`/${link}`} style={{ textDecoration: 'none' }}>
