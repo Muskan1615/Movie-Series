@@ -1,29 +1,26 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-import MoviesSingleContent from "../../components/SingleContent/MoviesSingleContent";
 import { Grid, Typography } from "@mui/material";
-import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
 import Stack from "@mui/material/Stack";
-import Genres from "../../components/Genres";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import MoviesSingleContent from "../../components/SingleContent/MoviesSingleContent";
 import { fetchMovies } from "../../Store/Slices/Movieslice";
-import { useParams } from "react-router-dom";
 import { RootState } from "../../Store/Store";
 
 const Movies = () => {
   const [page, setPage] = useState(1);
-  const [loadings, setLoadings] = useState<boolean>(true);
-  const { id } = useParams();
+  // const [loadings, setLoadings] = useState<boolean>(true);
+  // const { id } = useParams();
   // const [movies, setMovies] = useState([] as ResultsEntity[]);
-  const [selectedGenres, setSelectedGenres] = useState([]);
-  const [genres, setGenres] = useState([]);
+  // const [selectedGenres, setSelectedGenres] = useState([]);
+  // const [genres, setGenres] = useState([]);
 
   const dispatch: any = useDispatch();
   const movies = useSelector((state: RootState) => state.movies.movie);
 
   useEffect(() => {
-    setLoadings(true);
+    // setLoadings(true);
     dispatch(fetchMovies(page));
   }, [dispatch, page]);
 
