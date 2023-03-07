@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 function TrendingSingleContent(props: Props) {
   const link = props.id;
+  const type = props.media_type;
   return (
     <>
       <Link to={`/${link}`} style={{ textDecoration: 'none' }}>

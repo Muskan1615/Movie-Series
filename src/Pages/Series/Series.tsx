@@ -48,18 +48,17 @@ const Series = () => {
     <div>
       <span className="pageTitle">TV Series</span>
       <Container>
-        <ButtonGroup
-          sx={{ flexWrap: "wrap", marginBottom: "20px", spacing: "5" }}
-        >
+        <ButtonGroup sx={{ flexWrap: "wrap", marginBottom: "20px" , justifyContent:"center"}}>
           {genres.map((item: any) => (
             <Button
               color="inherit"
               variant="contained"
               onClick={() => clickHandler(item.id)}
               sx={{
-                margin: "5px 10px 5px 0px",
+                margin: "5px 10px 2px 0px",
                 width: "15%",
-                whitespace: "nowrap",
+                whiteSpace: "nowrap",
+                textAlign: "center",
               }}
             >
               {item.name}
