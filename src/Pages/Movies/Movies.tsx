@@ -1,11 +1,11 @@
-import { Grid, Typography } from '@mui/material';
+import { ButtonGroup, Grid, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Stack from '@mui/material/Stack';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import MoviesSingleContent from '../../components/SingleContent/MoviesSingleContent';
-import { fetchMovies } from '../../Store/Slices/Movieslice';
+import { fetchMovies, fetchMoviesByGenre } from '../../Store/Slices/Movieslice';
 import { RootState } from '../../Store/Store';
 
 const Movies = () => {
@@ -15,6 +15,27 @@ const Movies = () => {
 	// const [movies, setMovies] = useState([] as ResultsEntity[]);
 	// const [selectedGenres, setSelectedGenres] = useState([]);
 	// const [genres, setGenres] = useState([]);
+	const genres = [
+		{ id: 28, name: 'Action' },
+		{ id: 12, name: 'Adventure' },
+		{ id: 16, name: 'Animation' },
+		{ id: 35, name: 'Comedy' },
+		{ id: 80, name: 'Crime' },
+		{ id: 99, name: 'Documentary' },
+		{ id: 18, name: 'Drama' },
+		{ id: 10751, name: 'Family' },
+		{ id: 14, name: 'Fantasy' },
+		{ id: 36, name: 'History' },
+		{ id: 27, name: 'Horror' },
+		{ id: 10402, name: 'Music' },
+		{ id: 9648, name: 'Mystery' },
+		{ id: 10749, name: 'Romance' },
+		{ id: 878, name: 'Science Fiction' },
+		{ id: 10770, name: 'TV Movie' },
+		{ id: 53, name: 'Thriller' },
+		{ id: 10752, name: 'War' },
+		{ id: 37, name: 'Western' },
+	];
 
 	const dispatch: any = useDispatch();
 	const movies = useSelector((state: RootState) => state.movies.movie);
@@ -23,11 +44,18 @@ const Movies = () => {
 		// setLoadings(true);
 		dispatch(fetchMovies(page));
 	}, [dispatch, page]);
-
+	const clickHandler = (id: number) => {
+	  dispatch(fetchMoviesByGenre(id))
+	}
 	return (
-		<div>
+		<>
 			<span className='pageTitle'>Movies</span>
 			<Container>
+				<ButtonGroup sx={{ flexWrap: 'wrap' }}>
+					{genres.map((item: any) => (
+						<Button onClick={()=>clickHandler(item.id)}>{item.name}</Button>
+					))}
+				</ButtonGroup>
 				<Grid container rowSpacing={3} spacing={3} justifyContent='center' alignItems='center' marginBottom={20}>
 					{movies &&
 						movies.map((movie: any) => (
@@ -56,7 +84,7 @@ const Movies = () => {
 					</Typography>
 				</Button>
 			</Stack>
-		</div>
+		</>
 	);
 };
 
